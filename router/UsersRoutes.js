@@ -10,4 +10,9 @@ router.post('/users', UsersController.create);
 
 router.get('/users', UsersController.find);
 
+//GET ONE
+
+router.get('/users/:id', UsersController.findById);
+
+
 module.exports = router;
