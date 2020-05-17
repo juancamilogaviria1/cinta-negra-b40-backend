@@ -14,5 +14,5 @@ server.get('/api/v1/temario/:id', (req, res) => {
 });
 
 //exportar server para poder requerirlo desde otros archivos
-module.exports = { app, PORT};
+module.exports = { server, PORT};
 
