@@ -25,7 +25,7 @@ const usersSchema = new Schema({
     }
 });
 
-UserSchema.pre('save', function(next) {
+usersSchema.pre('save', function(next) {
     const user = this;
 
 // only hash the password if it has been modified (or is new)
@@ -48,7 +48,7 @@ bcrypt.genSalt(SALT_WORK_FACTOR, function(err, salt) {
 
 });
 
-UserSchema.methods.comparePassword = function(candidatePassword, cb) {
+usersSchema.methods.comparePassword = function(candidatePassword, cb) {
     bcrypt.compare(candidatePassword, this.password, function(err, isMatch) {
         if (err) return false;
         return isMatch;
