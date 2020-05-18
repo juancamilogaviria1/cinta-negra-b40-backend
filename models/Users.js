@@ -15,6 +15,7 @@ const usersSchema = new Schema({
     email:{
         type: String,
         required: true,
+        unique: true,
     },
     is_active:{
         type: Boolean,
@@ -48,12 +49,7 @@ bcrypt.genSalt(SALT_WORK_FACTOR, function(err, salt) {
 
 });
 
-usersSchema.methods.comparePassword = function(candidatePassword, cb) {
-    bcrypt.compare(candidatePassword, this.password, function(err, isMatch) {
-        if (err) return false;
-        return isMatch;
-    });
-};
+
 
 
 const Users = mongoose.model('User', usersSchema);

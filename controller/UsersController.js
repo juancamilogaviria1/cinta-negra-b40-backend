@@ -55,8 +55,20 @@ module.exports = {
         } catch (err) {
         res.status(400).send({ message: 'Error signin up', err });
         }
-
     },
+    login: async (req,res) => {
+        const { email, password } = req.body;
+        try{
+            const user = await UsersService.findByEmail(email);
+            if (!user) res.status(404).send({ message: 'User not found' });
+            const isMatch = UsersService.comparePassword(password, user.password);
+            if (!isMatch) res.status(400).send({ message: 'invalid credentials'});
+            return res.status(200).send({ message: "Login correct"})
+        } catch (err){
+            res.status(400).send({ message: 'Error on login', err});
+        }
+        
+    }
 
 }
 

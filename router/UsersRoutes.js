@@ -15,7 +15,7 @@ router.delete('/users/:id', UsersController.findByIdAndDelete);
 
 //LOGIN
 router.post('/users/signup', UsersController.signup);
-// router.post('/users/login', UsersController.login);
+router.post('/users/login', UsersController.login);
 
 
 module.exports = router;
