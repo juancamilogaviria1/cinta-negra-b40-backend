@@ -1,4 +1,4 @@
-const {UsersService} = require('../services');
+const { UsersService } = require('../services');
 const utils = require('../utils');
 
 
@@ -8,7 +8,7 @@ module.exports = {
         const user = await  UsersService.create(req.body);
         res.status(201).send(user)
         } catch (err) {
-        res.status(400).send({ message: 'Error creating user', err });
+         res.status(400).send({ message: 'Error creating user', err });
         }
 
     },
@@ -68,12 +68,12 @@ module.exports = {
             //Devolver JWT
                 const token = utils.createToken({ 
                     id: user._id,    
-                    first_name: user.first_name,
+                    name: user.first_name,
                     email: user.email,
                 });
             return res.status(200).send({ message: "Login correct", token});
-        } catch (err){
-            res.status(400).send({ message: 'Error on login', err});
+        } catch (error){
+            res.status(400).send({ message: 'Error on login', error});
         }
         
     }

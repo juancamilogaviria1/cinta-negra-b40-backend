@@ -5,11 +5,11 @@ module.exports = {
         try {
             const { authorization } = req.headers;
             const token = authorization.split(" ")[1];
-            const decoded = jwt.verify(token, proces.env.JWT_SECRET);
+            const decoded = jwt.verify(token, process.env.JWT_SECRET);
             req.decoded = decoded;
             next();
-        } catch (err) {
-            res.status(403).send({ err })
+        } catch (error) {
+            res.status(403).send({ error })
         }
     },
 };
