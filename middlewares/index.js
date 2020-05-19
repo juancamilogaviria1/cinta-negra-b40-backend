@@ -9,8 +9,11 @@ module.exports = {
             req.decoded = decoded;
             next();
         } catch (error) {
+            console.log(error)
             res.status(403).send({ error })
         }
     },
 };
 
+
+//Cannot read property 'split' of undefined
