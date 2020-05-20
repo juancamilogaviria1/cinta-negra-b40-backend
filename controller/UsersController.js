@@ -32,6 +32,7 @@ module.exports = {
     findByIdAndUpdate: async (req, res) => {
         const { id } = req.params;
         const { body } = req;
+        // if(body.roles)        
         try {
             const user = await UsersService.findById(id);
             const updatedUser = await UsersService.update(user, body);
