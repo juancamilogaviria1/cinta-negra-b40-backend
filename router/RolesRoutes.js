@@ -6,7 +6,7 @@ const { RolesValidator } = require('../validators');
 //CREATE USER
 router.post('/users/:id/roles', RolesValidator.create, RolesController.create);
 // //GET ALL
-// router.get('/users/:id/roles',  RolesController.find);
+router.get('/users/:id/roles',  RolesController.find);
 // //UPDATE
 // router.patch('/users/:id/roles/:idRole', RolesValidator.update, RolesController.findByIdAndUpdate);
 // //DELETE
