@@ -30,9 +30,14 @@ module.exports = {
         } 
     },
     findByIdAndUpdate: async (req, res) => {
+        if(req.files) {
+            const { photo } = req.files;
+            console.log(photo)
+            const upload = await utils.uploadFile(photo.tempFilePath);
+            if(upload) req.body.profile_img = upload.url;
+        }
         const { id } = req.params;
-        const { body } = req;
-        // if(body.roles)        
+        const { body } = req;       
         try {
             const user = await UsersService.findById(id);
             const updatedUser = await UsersService.update(user, body);

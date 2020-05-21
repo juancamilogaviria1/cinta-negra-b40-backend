@@ -25,6 +25,9 @@ const usersSchema = new Schema({
     password: {
         type: String,
     },
+    profile_img: {
+        type: String,
+    },
     roles: [rolesSchema],
     sensors: [
         { type: Schema.Types.ObjectId, ref: 'Sensors' }
