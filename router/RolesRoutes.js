@@ -12,7 +12,7 @@ router.get('/users/:idUser/roles/:idRole', RolesController.findById);
 // //UPDATE
 router.patch('/users/:idUser/roles/:idRole', RolesValidator.update, RolesController.findByIdAndUpdate);
 // //DELETE
-// router.delete('/users/:id/roles/:idRole', RolesController.findByIdAndDelete);
+router.delete('/users/:idUser/roles/:idRole', RolesController.findByIdAndDelete);
 
 
 module.exports = router;

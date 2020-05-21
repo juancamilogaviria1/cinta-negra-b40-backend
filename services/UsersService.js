@@ -21,7 +21,7 @@ module.exports = {
         user.roles.push(role);
         return user.save();
     },
-    updateRole: (user, updatedRole) =>{
+    updateRole: (user, updatedRole) => {
         const updatedRoles = user.roles.filter((rol) =>{
             if (rol._id === updatedRole._id){
                 return updatedRole;
@@ -29,7 +29,7 @@ module.exports = {
         });
         user.roles = updatedRoles;
         return user.save();
-    }
+    },
 } 
 
 
