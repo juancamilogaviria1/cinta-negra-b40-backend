@@ -31,10 +31,24 @@ module.exports = {
         const { idUser, idRole } = req.params;
         try {     
         const user = await UsersService.findById(idUser);
-        const rol = user.roles.id(idRole);
-        res.status(200).send(rol);
+        const role = user.roles.id(idRole);
+        res.status(200).send(role);
         } catch (err) {
          res.status(400).send({ message: 'Error getting user roles', err });
+        }
+
+    },
+    findByIdAndUpdate: async (req, res) => {
+        const { idUser, idRole } = req.params;
+        const { body } = req;
+        try {     
+        const user = await UsersService.findById(idUser);
+        const role = user.roles.id(idRole);
+        const updateRole = await RolesService.update(role, body);
+        const userWithUpdatedRole = await UsersService.updateRole(user, updateRole);
+        res.status(200).send(userWithUpdatedRole);
+        } catch (err) {
+         res.status(400).send({ message: 'Error updating user roles', err });
         }
 
     },

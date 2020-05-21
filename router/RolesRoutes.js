@@ -7,8 +7,10 @@ const { RolesValidator } = require('../validators');
 router.post('/users/:id/roles', RolesValidator.create, RolesController.create);
 // //GET ALL
 router.get('/users/:id/roles',  RolesController.find);
-// //UPDATE
+// GET ONE
 router.get('/users/:idUser/roles/:idRole', RolesController.findById);
+// //UPDATE
+router.patch('/users/:idUser/roles/:idRole', RolesValidator.update, RolesController.findByIdAndUpdate);
 // //DELETE
 // router.delete('/users/:id/roles/:idRole', RolesController.findByIdAndDelete);
 
